@@ -15,6 +15,7 @@
     nixpkgs,
     flake-utils,
     vs-mlrt-src,
+    ...
   }: let
     version = "15.16";
     src = vs-mlrt-src;
