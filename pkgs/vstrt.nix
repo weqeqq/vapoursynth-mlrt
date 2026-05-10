@@ -26,6 +26,9 @@ stdenv.mkDerivation {
   buildInputs = [
     vapoursynth
     cudaPackages.cuda_cudart
+  ];
+
+  propogatedBuildInputs = [
     cudaPackages.tensorrt
   ];
 
@@ -44,7 +47,9 @@ stdenv.mkDerivation {
     "-DCMAKE_INSTALL_LIBDIR=lib/vapoursynth"
   ];
 
-  meta = commonMeta // {
-    description = "VapourSynth TensorRT runtime (vstrt) for vs-mlrt";
-  };
+  meta =
+    commonMeta
+    // {
+      description = "VapourSynth TensorRT runtime (vstrt) for vs-mlrt";
+    };
 }
