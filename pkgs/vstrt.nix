@@ -28,7 +28,7 @@ stdenv.mkDerivation {
     cudaPackages.cuda_cudart
   ];
 
-  propogatedBuildInputs = [
+  propagatedBuildInputs = [
     cudaPackages.tensorrt
   ];
 
