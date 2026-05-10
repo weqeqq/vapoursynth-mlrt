@@ -46,7 +46,7 @@ stdenv.mkDerivation {
 
   postInstall = ''
     mkdir -p $out/lib/vapoursynth/vsmlrt-cuda
-    ln -s ${cudaPackages.tensorrt}/bin/trtexec $out/lib/vapoursynth/vsmlrt-cuda/trtexec
+    ln -s ${lib.getBin cudaPackages.tensorrt}/bin/trtexec $out/lib/vapoursynth/vsmlrt-cuda/trtexec
   '';
 
   meta =
