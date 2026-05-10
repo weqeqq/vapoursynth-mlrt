@@ -26,9 +26,6 @@ stdenv.mkDerivation {
   buildInputs = [
     vapoursynth
     cudaPackages.cuda_cudart
-  ];
-
-  propagatedBuildInputs = [
     cudaPackages.tensorrt
   ];
 
@@ -46,6 +43,11 @@ stdenv.mkDerivation {
     "-DUSE_NVINFER_PLUGIN=ON"
     "-DCMAKE_INSTALL_LIBDIR=lib/vapoursynth"
   ];
+
+  postInstall = ''
+    mkdir -p $out/lib/vapoursynth/vsmlrt-cuda
+    ln -s ${cudaPackages.tensorrt}/bin/trtexec $out/lib/vapoursynth/vsmlrt-cuda/trtexec
+  '';
 
   meta =
     commonMeta
